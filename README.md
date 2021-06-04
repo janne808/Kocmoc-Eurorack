@@ -2,7 +2,7 @@
 
 Copyright (c) 2021 Janne Heikkarainen (janne808@radiofreerobotron.net)
 
-## Kocmoc Free Open Source Hardware for Eurorack
+### Kocmoc Free Open Source Hardware for Eurorack
 
 * SVF
 
