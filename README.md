@@ -5,7 +5,7 @@ Copyright (c) 2021 Janne Heikkarainen (janne808@radiofreerobotron.net)
 Kocmoc Free Open Hardware for Eurorack
 
 * SVF
-  * Files are made for Eagle 9.x
+   Files are made for Eagle 9.x
 
 # Licence
 
