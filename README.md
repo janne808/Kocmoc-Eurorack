@@ -6,7 +6,7 @@ Copyright (c) 2021 Janne Heikkarainen (janne808@radiofreerobotron.net)
 
 * SVF
 
-   Voltage controlled state variable filter design based on the VCV Rack module of the same name
+   Voltage controlled state variable filter design based on the VCV Rack module of the same name. PCB Eurorack compatible panel included.
 
    Files are made for Eagle 9.x
 
