@@ -12,4 +12,4 @@ Copyright (c) 2021 Janne Heikkarainen (janne808@radiofreerobotron.net)
 
 # Licence
 
-All hardware descriptions are released under CERN Open Hardware Licence Version 2 - Strongly Reciprocal, please find the full text as part of this repo
+All hardware descriptions, board designs and schematics are released under CERN Open Hardware Licence Version 2 - Strongly Reciprocal, please find the full text as part of this repo
