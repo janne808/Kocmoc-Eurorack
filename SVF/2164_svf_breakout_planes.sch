@@ -20304,6 +20304,11 @@ http://www.jwmiller.com&lt;p&gt;
 <text x="38.1" y="93.98" size="1.778" layer="91">input</text>
 <text x="40.64" y="132.08" size="1.778" layer="91">cv1</text>
 <text x="40.64" y="236.22" size="1.778" layer="91">cv2</text>
+<text x="170.18" y="15.24" size="1.778" layer="91">Copyright (c) 2021 Janne Heikkarainen (janne808@radiofreerobotron.net)
+All rights reserved
+
+</text>
+<text x="170.18" y="10.16" size="1.778" layer="91">Released under CERN Open Hardware Licence Version 2 - Strongly Reciprocal</text>
 </plain>
 <instances>
 <instance part="IC1" gate="A" x="226.06" y="88.9" smashed="yes">
@@ -22114,6 +22119,10 @@ http://www.jwmiller.com&lt;p&gt;
 </schematic>
 </drawing>
 <compatibility>
+<note version="6.3" minversion="6.2.2" severity="warning">
+Since Version 6.2.2 text objects can contain more than one line,
+which will not be processed correctly with this version.
+</note>
 <note version="8.2" severity="warning">
 Since Version 8.2, EAGLE supports online libraries. The ids
 of those online libraries will not be understood (or retained)
