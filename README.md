@@ -6,6 +6,8 @@ Copyright (c) 2021 Janne Heikkarainen (janne808@radiofreerobotron.net)
 
 * SVF
 
+   Voltage controlled state variable filter design based on the VCV Rack module of the same name
+
    Files are made for Eagle 9.x
 
 # Licence
