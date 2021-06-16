@@ -1,6 +1,7 @@
 # Kocmoc-Eurorack
 
 Copyright (c) 2021 Janne Heikkarainen (janne808@radiofreerobotron.net)
+All rights reserved.
 
 ### Kocmoc Free Open Source Hardware for Eurorack
 
