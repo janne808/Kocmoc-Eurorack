@@ -1,0 +1,4 @@
+Please note that according to section 3.3.b of the CERN Open Hardware version 2 licence, licensees should provide a brief entry with a date and the nature of the modification for each design change.
+
+====
+
