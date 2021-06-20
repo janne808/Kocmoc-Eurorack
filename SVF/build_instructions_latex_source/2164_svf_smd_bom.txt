@@ -1,0 +1,88 @@
+Part   Value         Device                  Package            Description                                   
+C1     220p          C-EUC0603               C0603              CAPACITOR, European symbol                    
+C2     220p          C-EUC0603               C0603              CAPACITOR, European symbol                    
+C3     22p           C-EUC0603               C0603              CAPACITOR, European symbol                    
+C4     22p           C-EUC0603               C0603              CAPACITOR, European symbol                    
+C5     680p          C-EUC0603               C0603              CAPACITOR, European symbol                    
+C6     680p          C-EUC0603               C0603              CAPACITOR, European symbol                    
+C7     1u            CPOL-EUB                PANASONIC_B        POLARIZED CAPACITOR, European symbol          
+C8     560p          C-EUC0603               C0603              CAPACITOR, European symbol                    
+C9     100n          C-EUC0603               C0603              CAPACITOR, European symbol                    
+C10    22p           C-EUC0603               C0603              CAPACITOR, European symbol                    
+C11    2.2u          CPOL-EUB                PANASONIC_B        POLARIZED CAPACITOR, European symbol          
+C12    22p           C-EUC0603               C0603              CAPACITOR, European symbol                    
+C13    2.2u          CPOL-EUB                PANASONIC_B        POLARIZED CAPACITOR, European symbol          
+C14    22p           C-EUC0603               C0603              CAPACITOR, European symbol                    
+C15    10u           CPOL-EUB                PANASONIC_B        POLARIZED CAPACITOR, European symbol          
+C16    10u           CPOL-EUB                PANASONIC_B        POLARIZED CAPACITOR, European symbol          
+C17    100n          C-EUC0603               C0603              CAPACITOR, European symbol                    
+C18    100n          C-EUC0603               C0603              CAPACITOR, European symbol                    
+C19    100n          C-EUC0603               C0603              CAPACITOR, European symbol                    
+C20    100n          C-EUC0603               C0603              CAPACITOR, European symbol                    
+C21    100n          C-EUC0603               C0603              CAPACITOR, European symbol                    
+C22    100n          C-EUC0603               C0603              CAPACITOR, European symbol                    
+C23    100n          C-EUC0603               C0603              CAPACITOR, European symbol                    
+C24    100n          C-EUC0603               C0603              CAPACITOR, European symbol                    
+C27    100n          C-EUC0603               C0603              CAPACITOR, European symbol                    
+C28    100n          C-EUC0603               C0603              CAPACITOR, European symbol                    
+C29    5p            C-EUC0603               C0603              CAPACITOR, European symbol                    
+C30    5p            C-EUC0603               C0603              CAPACITOR, European symbol                    
+D1     4.7           DIODE_ZENER-DIODESOD80C DIODE_SOD80C       Z-Diode                                       
+D2     4.7           DIODE_ZENER-DIODESOD80C DIODE_SOD80C       Z-Diode                                       
+D3     1N4148WX-TP   1N4148WX-TP             SOD323R-INFINEON                                                 
+D4     4.7           DIODE_ZENER-DIODESOD80C DIODE_SOD80C       Z-Diode                                       
+D5     1N5817        SCHOTTKY-DIODEDO35-7    DO35-7             Schottky Diode                                
+D6     1N5817        SCHOTTKY-DIODEDO35-7    DO35-7             Schottky Diode                                
+HEADR1               10PIN_BACKSIDE          10PIN_BACKSIDE     PIN HEADER                                    
+HEADR2               10PIN_BACKSIDE          10PIN_BACKSIDE     PIN HEADER                                    
+HEADR3               10PIN_BACKSIDE          10PIN_BACKSIDE     PIN HEADER                                    
+HEADR4               10PIN_BACKSIDE          10PIN_BACKSIDE     PIN HEADER                                    
+IC1    SSM2164S      SSM2164S                SOIC16N                                                          
+IC2    TL072         OPAMP-DUALU             SO08               Generic op-amp footprint                      
+IC3    TL072         OPAMP-DUALU             SO08               Generic op-amp footprint                      
+IC4    TL072         OPAMP-DUALU             SO08               Generic op-amp footprint                      
+IC5    TL072         OPAMP-DUALU             SO08               Generic op-amp footprint                      
+IC6    TL072         OPAMP-DUALU             SO08               Generic op-amp footprint                      
+J1                   CONN_05X2SHD            2X5-SHROUDED       Multi connection point. Often used as Generic 
+L1     FERRITE       EXC3BP                  0603               Chip Bead Core                                
+L2     FERRITE       EXC3BP                  0603               Chip Bead Core                                
+R1     15k           R-EU_R0603              R0603              RESISTOR, European symbol                     
+R2     15k           R-EU_R0603              R0603              RESISTOR, European symbol                     
+R3     15k           R-EU_R0603              R0603              RESISTOR, European symbol                     
+R4     15k           R-EU_R0603              R0603              RESISTOR, European symbol                     
+R5     100k          R-EU_R0603              R0603              RESISTOR, European symbol                     
+R6     33k           R-EU_R0603              R0603              RESISTOR, European symbol                     
+R7     360           R-EU_R0603              R0603              RESISTOR, European symbol                     
+R8     360           R-EU_R0603              R0603              RESISTOR, European symbol                     
+R9     3k            R-EU_R0603              R0603              RESISTOR, European symbol                     
+R10    30k           R-EU_R0603              R0603              RESISTOR, European symbol                     
+R11    4k            R-EU_R0603              R0603              RESISTOR, European symbol                     
+R12    15k           R-EU_R0603              R0603              RESISTOR, European symbol                     
+R13    100k          R-EU_R0603              R0603              RESISTOR, European symbol                     
+R14    100k          R-EU_R0603              R0603              RESISTOR, European symbol                     
+R15    100k          R-EU_R0603              R0603              RESISTOR, European symbol                     
+R16    820           R-EU_R0603              R0603              RESISTOR, European symbol                     
+R17    100k          R-EU_R0603              R0603              RESISTOR, European symbol                     
+R18    100k          R-EU_R0603              R0603              RESISTOR, European symbol                     
+R19    270k          R-EU_R0603              R0603              RESISTOR, European symbol                     
+R20    77k           R-EU_R0603              R0603              RESISTOR, European symbol                     
+R21    22k           R-EU_R0603              R0603              RESISTOR, European symbol                     
+R22    1k            R-EU_R0603              R0603              RESISTOR, European symbol                     
+R23    100k          R-EU_R0603              R0603              RESISTOR, European symbol                     
+R24    1k            R-EU_R0603              R0603              RESISTOR, European symbol                     
+R25    22k           R-EU_R0603              R0603              RESISTOR, European symbol                     
+R26    1k            R-EU_R0603              R0603              RESISTOR, European symbol                     
+R27    100k          R-EU_R0603              R0603              RESISTOR, European symbol                     
+R28    22k           R-EU_R0603              R0603              RESISTOR, European symbol                     
+R29    2.7k          R-EU_R0603              R0603              RESISTOR, European symbol                     
+U1     THONKICONNNEW THONKICONNNEW           WQP-PJ301M-12_JACK 3.5mm socket for Eurorack modular synths      
+U2     THONKICONNNEW THONKICONNNEW           WQP-PJ301M-12_JACK 3.5mm socket for Eurorack modular synths      
+U3     THONKICONNNEW THONKICONNNEW           WQP-PJ301M-12_JACK 3.5mm socket for Eurorack modular synths      
+U4     THONKICONNNEW THONKICONNNEW           WQP-PJ301M-12_JACK 3.5mm socket for Eurorack modular synths      
+U5     THONKICONNNEW THONKICONNNEW           WQP-PJ301M-12_JACK 3.5mm socket for Eurorack modular synths      
+U6     THONKICONNNEW THONKICONNNEW           WQP-PJ301M-12_JACK 3.5mm socket for Eurorack modular synths      
+VR1    A100k         9MM_SNAP-IN_POT_        9MM_SNAP-IN_POT    9mm vertical snap-in pot, Alpha / Panasonic st
+VR2    A100k         9MM_SNAP-IN_POT_        9MM_SNAP-IN_POT    9mm vertical snap-in pot, Alpha / Panasonic st
+VR3    B10k          9MM_SNAP-IN_POT_        9MM_SNAP-IN_POT    9mm vertical snap-in pot, Alpha / Panasonic st
+VR4    B10k          9MM_SNAP-IN_POT_        9MM_SNAP-IN_POT    9mm vertical snap-in pot, Alpha / Panasonic st
+VR5    B100k         9MM_SNAP-IN_POT_        9MM_SNAP-IN_POT    9mm vertical snap-in pot, Alpha / Panasonic st
