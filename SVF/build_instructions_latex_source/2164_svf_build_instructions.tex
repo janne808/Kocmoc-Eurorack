@@ -1,6 +1,6 @@
 \documentclass{article}
 %\usepackage[T1]{fontenc}
-\usepackage{color,xparse,expl3,hyperref,pdfpages,caption,fancyvrb}
+\usepackage{xcolor,xparse,expl3,hyperref,pdfpages,caption,fancyvrb}
 
 % redefine \VerbatimInput
 \RecustomVerbatimCommand{\VerbatimInput}{VerbatimInput}%
@@ -8,9 +8,9 @@
 %
 frame=lines,  % top and bottom rule only
 framesep=2em, % separation between frame and text
-rulecolor=\color{Gray},
+rulecolor=\color{gray},
 %
-label=\fbox{\color{Black}data.txt},
+label=\fbox{\color{black}data.txt},
 labelposition=topline,
 %
 commandchars=\|\(\), % escape character and argument delimiters for
@@ -40,15 +40,11 @@ commentchar=*        % comment character
 \newcommand\emailfont{\sffamily}
 \newcommand\emailat{{\color{red}\small @}}
 
-\title{Kocmoc SVF Eurorack Module Build Instructions}
+\title{Kocmoc SVF Eurorack Module Build Instructions for V1.6}
 \author{Janne Heikkarainen (\email{janne808@radiofreerobotron.net}) \\
 	}
 
 \date{\today}
-
-% Hint: \title{what ever}, \author{who care} and \date{when ever} could stand 
-% before or after the \begin{document} command 
-% BUT the \maketitle command MUST come AFTER the \begin{document} command!
 
 \begin{document}
 
@@ -73,21 +69,43 @@ The two voltage controlled integrators responsible for the filter operation foll
 
 \section{Build instructions} \label{buildinstructions}
 
+\begin{flushleft}
 The PCB consists of panelized boards, one for front panel connectors and one for the power connector, integrators and input/output buffering. The boards are connected together with two 10-pin headers and a 11mm M3 PCB standoff.\newline
+\end{flushleft}
 
-\newpage
+\begin{flushleft}
+It is important to mount the 9mm potentiometers, Thonkiconn jack sockets and the M3 board standoff first \emph{without soldering} to the control PCB and only after that attach them to the front panel with appropriate nuts.
+\end{flushleft}
 
-It is advised to populate the boards in the following order
+\begin{flushleft}
+The building process should follow the following order
 
 \begin{itemize}
-\item Resistors
-\item Diodes
-\item Capacitors
-\item Integrated circuits
-\item Power connector and headers
-\item 11mm M3 PCB standoff
-\item Front panel potentiometers and connectors
+\item Populate and solder resistors on both boards
+\item Populate and solder diodes
+\item Populate and solder capacitors on both boards
+\item Populate and solder integrated circuits
+\item Break the panelized boards in half and trim off mousebites
+\item Solder power connector and headers (make sure the pins match from schematics and board layout)
+\item Mount 11mm M3 PCB standoff with a M3 screw on the upper control board
+\item Mount the snap-on 9mm Alpha potentiometers VR4 and VR1 \emph{without soldering}
+\item Mount the snap-on 9mm Alpha trimmers VR3, VR5 and VR2 \emph{without soldering}
+\item Mount Thonkiconn jack sockets U1, U2, U3, U4, U5 and U6 \emph{without soldering}
+\item Mount the front panel
+\item Fingertighten socket and potentiometer nuts to the panel
+\item Solder in through-hole sockets and potentiometers
+\item Tighten nuts fully
 \end{itemize}
+\end{flushleft}
+
+\paragraph{SSM2164 issues}
+\begin{flushleft}
+The original Analog Devices SSM2164 has a fault which will burn the chip if the negative power supply rail becomes unconnected. This fault has been corrected in modern clones from SSI and Alpha but remains in Coolaudio V2164. 
+\end{flushleft}
+
+\begin{flushleft}
+\cite{johnson} has researched the failure (with Oscar Salas) and proposed a fix which will be implemented in the next version of the board.
+\end{flushleft}
 
 \paragraph{Capacitors}
 \begin{flushleft}
@@ -102,11 +120,6 @@ Please note that version 1.5 of the boards had their power connector and header 
 Follow and match the board and schematic graphics to the Eurorack power connector standard to make sure the pins deliver proper voltages to the board. The board is diode protected against reverse voltage.
 \end{flushleft}
 
-\paragraph{Front panel connectors and 11mm M3 PCB standoff}
-\begin{flushleft}
-It is important to mount the 9mm potentiometers, Thonkiconn jack sockets and the M3 board standoff first \emph{without soldering} to the control PCB and only after that attach them to the front panel with appropriate nuts. Only after the connectors and potentiometers are tightened to the front panel and found their place should you solder them to the control PCB.
-\end{flushleft}
-
 \begin{thebibliography}{9}
 \bibitem[Chamberlin]{chamberlin}
 Hal Chamberlin.
@@ -117,6 +130,11 @@ Jeroen Allaert.
 \textit{Designing Voltage Controlled Filters for Synthesizers with the SSI2164}.
 Sound Semiconductor Inc., 2019
 \\\texttt{http://www.soundsemiconductor.com/downloads/AN701.pdf}
+\bibitem[Johnson]{johnson}
+Neil Johnson.
+\textit{SSM2164/SSI2164 Information}.
+Neil Johnson, 2021
+\\\texttt{https://www.njohnson.co.uk/index.php?menu=2\&submenu=2\&subsubmenu=3}
 \end{thebibliography}
 
 \newpage
@@ -126,11 +144,11 @@ Sound Semiconductor Inc., 2019
 \section{BOM}
 
 \centering
-\VerbatimInput[fontsize=\scriptsize, label=\fbox{\color{Black}Through-hole board BOM}]{2164_svf_through-hole_bom.txt}
+\VerbatimInput[fontsize=\scriptsize, label=\fbox{\color{black}Through-hole board BOM}]{2164_svf_through-hole_bom.txt}
 
 \newpage
 
-\VerbatimInput[fontsize=\scriptsize, label=\fbox{\color{Black}Surface mount device board BOM}]{2164_svf_smd_bom.txt}
+\VerbatimInput[fontsize=\scriptsize, label=\fbox{\color{black}Surface mount device board BOM}]{2164_svf_smd_bom.txt}
 
 \section{Schematics}
 
