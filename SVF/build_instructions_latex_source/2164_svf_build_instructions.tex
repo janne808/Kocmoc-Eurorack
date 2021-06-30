@@ -169,7 +169,7 @@ V_{out}' &= -\frac{1}{RC} \space V_{in} - \frac{I_{s}}{C} \space \sinh \frac{V_{
 
 where $I_s$ is the diode reverse saturation current, $\eta$ is the diode emission coefficient and $V_{t}$ is the diode thermal voltage.\newline
 
-Using a trapezoidal ODE solver with silicon diode parameters to model the circuit results in behaviour illustrated in figure \ref{fig:integrator}. \newline
+The above ODE can be solved using a numerical trapezoidal ODE solver. Inserting silicon diode parameters for the diode clipping circuit part of the equation results in a solution which is illustrated in figure \ref{fig:integrator}. \newline
 
 \begin{figure}[H]\centering
   \includegraphics[page=1, scale=0.58]{inverting_clipping_integrator2.pdf}
