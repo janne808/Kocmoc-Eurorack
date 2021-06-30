@@ -1,6 +1,8 @@
 \documentclass{article}
 %\usepackage[T1]{fontenc}
-\usepackage{xcolor,xparse,expl3,hyperref,pdfpages,caption,fancyvrb}
+\usepackage{xcolor,xparse,expl3,hyperref,pdfpages,caption,fancyvrb,float}
+\usepackage[siunitx, RPvoltages]{circuitikz}
+\usepackage{amsmath}
 
 % redefine \VerbatimInput
 \RecustomVerbatimCommand{\VerbatimInput}{VerbatimInput}%
@@ -40,6 +42,8 @@ commentchar=*        % comment character
 \newcommand\emailfont{\sffamily}
 \newcommand\emailat{{\color{red}\small @}}
 
+\setlength{\parindent}{0em}
+
 \title{Kocmoc SVF Eurorack Module Build Instructions for V1.6}
 \author{Janne Heikkarainen (\email{janne808@radiofreerobotron.net}) \\
 	}
@@ -65,19 +69,131 @@ You can find build instructions, board layouts and schematics at \newline
 
 The filter circuit is based on a classic 12dB/oct state variable filter circuit made popular by \cite{chamberlin}. The voltage control is implemented by voltage controlled amplifiers using the SSM2164 chip (or equivalent modern clone).\newline
 
-The two voltage controlled integrators responsible for the filter operation follow the SSI2164 application note example from \cite{allaert}.
+
+The two voltage controlled inverting integrators responsible for the filter operation follow the SSI2164 application note example from \cite{allaert}.\newline
+
+
+The classic voltage controlled SVF circuit is implemented with the following block diagram
+
+\begin{figure}[H]\centering
+\begin{circuitikz}[american, scale=0.5]
+\draw (0,0) node[above]{$input$} to[short, o-] ++(2,0)
+      node[adder, anchor=west](hpsum){}
+      (hpsum.east) -- ++(2,0)
+      node[ampshape, anchor=left, t=$\alpha$](bpamp){}
+      (bpamp.right) -- ++(1,0)
+      node[twoportshape, anchor=left, t=$\int$](bpint){}
+      (bpint.right) -- ++(2,0)
+      node[ampshape, anchor=left, t=$\alpha$](lpamp){}
+      (lpamp.right) -- ++(1,0)
+      node[twoportshape, anchor=left, t=$\int$](lpint){}
+      (lpint.right) to[short, -o] ++(3,0)
+      node[above](lpout){$lp$}
+      % lp feedback path
+      (lpint.right) ++(1,0) to[short, *-] ++(0,4)
+      node[](lpfb){}
+      -- (lpfb -| hpsum.north) -- (hpsum.north)
+      node[above right](lpsum){$-$}
+      % bp feedback path
+      (bpint.right) ++(1,0) to[short, *-] ++(0,-4)
+      -- ++(-4,0)
+      node[ampshape, scale=-1, anchor=left, t=\ctikzflipxy{$\zeta$}](bpfbamp){}
+      (bpfbamp.right) -- (bpfbamp -| hpsum.south)
+      -- (hpsum.south)
+      node[below right](bpsum){$-$}
+      % bp output
+      (bpint.right) ++(1,0) -- ++(0,6)
+      node[](bpout){} to[short, -o] (bpout -| lpout)
+      node[above](bp){$bp$}
+      % hp output
+      (hpsum.east) ++(1,0) to[short, *-] ++(0,-6)
+      node[](hpout){} to[short, -o] (hpout -| lpout)
+      node[above](hp){$hp$};
+\end{circuitikz}
+\end{figure}
+
+which follows the ordinary differential equation (ODE)
+
+\begin{align}
+\begin{split}
+x_{1}'(t) &= \alpha \space (input(t) - \zeta \space x_{1}(t) - x_{2}(t)) \\
+x_{2}'(t) &= \alpha \space x_{1}(t) \\
+\end{split}
+\end{align}
+
+where $x_{1}$ and $x_{2}$ are the first and second integrator variables respectively, $\zeta$ is the damping factor and $\alpha$ is the integration rate.\newline
+
+For a practical synthesizer filter however, the integration needs to be limited to a fixed interval by some method. Otherwise the process will result in voltages that get stuck at rail voltages and other instabilities.\newline
+
+In this filter the limiter is implemented in the first integrator with a diode soft clipper circuit in parallel with the feedback integration capacitor. This results in added even harmonics and a clean stable operation even with extreme input drive settings.\newline
+
+The following circuit implements the inverting soft clipping integrator
+
+\begin{figure}[H]\centering
+\begin{circuitikz}[american, scale=0.65]
+\draw (0,0) node[above](vin){$V_{in}$} to[/tikz/circuitikz/bipoles/length=1cm, R=$R$, o-] ++(4,0)
+      -- ++(1,0)
+      node[op amp, anchor=-](op1){}
+      % to ground
+      (op1.+) -- ++(0,-2) node[ground]{}
+      % to output
+      (op1.out) to[short, -o] ++(3,0)
+      node[above](vout){$V_{out}$}
+      % capacitor feedback
+      (op1.out) ++(1,0) to[short, *-] ++(0,3)
+      coordinate(capright)
+      to[/tikz/circuitikz/bipoles/length=1cm, C=$C$] ++(-6,0)
+      coordinate(capleft)
+      to[short, -*] (capleft |- op1.-)
+      % diode1 feedback
+      (capleft) to[short, *-] ++(0,2)
+      coordinate(d1left)
+      to[/tikz/circuitikz/bipoles/length=1cm, zD*, l_=$D_{1}$] (d1left -| capright)
+      coordinate(d1right)
+      to[short, -*] (d1right |- capright)
+      % diode2 feedback
+      (d1right) to[short, *-] ++(0,2)
+      coordinate(d2right)
+      to[/tikz/circuitikz/bipoles/length=1cm, zD*, l^=$D_{2}$] (d2right -| capleft)
+      to[short, -*] (d1left);
+\end{circuitikz}
+\end{figure}
+
+which follows the nonlinear ODE (assuming diodes are modelled with the forward current approximation)
+
+\begin{align}
+\begin{split}
+V_{out}' &= -\frac{1}{RC} \space V_{in} - \frac{I_{s}}{C} \space \sinh \frac{V_{out}}{\eta \space V_{t}}    
+\end{split}
+\end{align}
+
+where $I_s$ is the diode reverse saturation current, $\eta$ is the diode emission coefficient and $V_{t}$ is the diode thermal voltage.\newline
+
+Using a trapezoidal ODE solver with silicon diode parameters to model the circuit results in behaviour illustrated in figure \ref{fig:integrator}. \newline
+
+\begin{figure}[H]\centering
+  \includegraphics[page=1, scale=0.58]{inverting_clipping_integrator2.pdf}
+  \caption{Inverting soft clipping integrator}
+  \label{fig:integrator}
+\end{figure}
+
+Implementing the soft clipping integrator in the filter results in the following final nonlinear ODE model 
+
+\begin{align}
+\begin{split}
+x_{1}'(t) &= \alpha \space (input(t) - \zeta \space x_{1}(t) - x_{2}(t)) - a \space \sinh \frac{x_{1}}{b} \\
+x_{2}'(t) &= \alpha \space x_{1}(t) \\
+\end{split}
+\end{align}
 
 \section{Build instructions} \label{buildinstructions}
 
-\begin{flushleft}
 The PCB consists of panelized boards, one for front panel connectors and one for the power connector, integrators and input/output buffering. The boards are connected together with two 10-pin headers and a 11mm M3 PCB standoff.\newline
-\end{flushleft}
 
-\begin{flushleft}
-It is important to mount the 9mm potentiometers, Thonkiconn jack sockets and the M3 board standoff first \emph{without soldering} to the control PCB and only after that attach them to the front panel with appropriate nuts.
-\end{flushleft}
 
-\begin{flushleft}
+It is important to mount the 9mm potentiometers, Thonkiconn jack sockets and the M3 board standoff first \emph{without soldering} to the control PCB and only after that attach them to the front panel with appropriate nuts. \newline
+
+
 The building process should follow the following order
 
 \begin{itemize}
@@ -98,29 +214,19 @@ The building process should follow the following order
 \item Mount potentiometer caps for VR4 and VR1
 \item Connect the boards with the headers and M3 screw for the PCB standoff
 \end{itemize}
-\end{flushleft}
 
-\paragraph{SSM2164 issues}
-\begin{flushleft}
-The original Analog Devices SSM2164 has a fault which will burn the chip if the negative power supply rail becomes unconnected. This fault has been corrected in modern clones from SSI and Alpha but remains in Coolaudio V2164. 
-\end{flushleft}
+\subsection{SSM2164 issues}
+The original Analog Devices SSM2164 has a fault which will burn the chip if the negative power supply rail becomes unconnected. This fault has been corrected in modern clones from SSI and Alpha but remains in Coolaudio V2164.\newline
 
-\begin{flushleft}
 \cite{johnson} has researched the failure (with Oscar Salas) and proposed a fix which will be implemented in the next version of the board.
-\end{flushleft}
 
-\paragraph{Capacitors}
-\begin{flushleft}
+\subsection{Capacitors}
 Capacitors C29 and C30 are used for compensating parasitic effects of the PCB and component leads and should be left unpopulated and populated only if needed. The parasitic effects manifest themselves as increased resonance at higher cutoff frequencies.
-\end{flushleft}
 
-\paragraph{Power connector and headers}
-\begin{flushleft}
-Please note that version 1.5 of the boards had their power connector and header component footprint graphics mirrored by mistake. For the header pinouts this makes no difference but confusion could arise for the power connector. In any case, if a shrouded power connector is used, it should be mounted on the bottom side of the main board with the cutout slot facing away from the board.
-\end{flushleft}
-\begin{flushleft}
+\subsection{Power connector and headers}
+Please note that version 1.5 of the boards had their power connector and header component footprint graphics mirrored by mistake. For the header pinouts this makes no difference but confusion could arise for the power connector. In any case, if a shrouded power connector is used, it should be mounted on the bottom side of the main board with the cutout slot facing away from the board.\newline
+
 Follow and match the board and schematic graphics to the Eurorack power connector standard to make sure the pins deliver proper voltages to the board. The board is diode protected against reverse voltage.
-\end{flushleft}
 
 \begin{thebibliography}{9}
 \bibitem[Chamberlin]{chamberlin}
