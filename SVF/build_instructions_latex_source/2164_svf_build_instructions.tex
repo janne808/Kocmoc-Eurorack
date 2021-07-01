@@ -110,6 +110,8 @@ The classic voltage controlled SVF circuit is implemented with the following blo
       node[](hpout){} to[short, -o] (hpout -| lpout)
       node[above](hp){$hp$};
 \end{circuitikz}
+\caption{Voltage controlled state variable filter block diagram}
+\label{fig:blockdiagram}
 \end{figure}
 
 which follows the ordinary differential equation (ODE)
@@ -157,6 +159,8 @@ The following circuit implements the inverting soft clipping integrator
       to[/tikz/circuitikz/bipoles/length=1cm, zD*, l^=$D_{2}$] (d2right -| capleft)
       to[short, -*] (d1left);
 \end{circuitikz}
+\caption{Inverting soft clipping integrator}
+\label{fig:invertingint}
 \end{figure}
 
 which follows the nonlinear ODE (assuming diodes are modelled with the forward current approximation)
@@ -173,7 +177,7 @@ The above ODE can be solved using a numerical trapezoidal ODE solver. Inserting 
 
 \begin{figure}[H]\centering
   \includegraphics[page=1, scale=0.58]{inverting_clipping_integrator2.pdf}
-  \caption{Inverting soft clipping integrator}
+  \caption{Numerical solution to inverting soft clipping integrator ODE model}
   \label{fig:integrator}
 \end{figure}
 
