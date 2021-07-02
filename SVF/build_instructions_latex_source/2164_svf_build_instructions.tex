@@ -72,6 +72,7 @@ The filter circuit is based on a classic 12dB/oct state variable filter circuit 
 
 The two voltage controlled inverting integrators responsible for the filter operation follow the SSI2164 application note example from \cite{allaert}.\newline
 
+\subsection{State variable filter block diagram}
 
 The classic voltage controlled SVF circuit is implemented with the following block diagram
 
@@ -125,9 +126,11 @@ x_{2}'(t) &= \alpha \space x_{1}(t) \\
 
 where $x_{1}$ and $x_{2}$ are the first and second integrator variables respectively, $\zeta$ is the damping factor and $\alpha$ is the integration rate.\newline
 
-For a practical synthesizer filter however, the integration needs to be limited to a fixed interval by some method. Otherwise the process will result in voltages that get stuck at rail voltages and other instabilities.\newline
+\subsection{Fixed interval limiting for integrator}
 
-In this filter the limiter is implemented in the first integrator with a diode soft clipper circuit in parallel with the feedback integration capacitor. This results in added even harmonics and a clean stable operation even with extreme input drive settings.\newline
+For a practical synthesizer filter, the integration needs to be limited to a fixed interval by some method. Otherwise the process will result in voltages that get stuck at rail voltages and other instabilities.\newline
+
+In this filter the limiter is implemented in the first integrator with a diode soft clipper circuit in parallel with the feedback integration capacitor. This results in added even harmonics and stable operation even with extreme input drive and resonance settings.\newline
 
 The following circuit implements the inverting soft clipping integrator
 
@@ -190,7 +193,13 @@ x_{2}'(t) &= \alpha \space x_{1}(t) \\
 \end{split}
 \end{align}
 
-It should be noted that the above model is idealized and differs from the practical implementation. The integrators on the board are both inverting which should be taken into account when analysing the circuit operation. \newline
+It should be noted that the above model is idealized and differs from the practical implementation. The integrators on the board are both inverting ($\alpha < 0$) which should be taken into account when analysing the circuit operation. \newline
+
+\subsection{Boosting resonance}
+
+In state variable filters the damping factor control $\zeta$ is reversed: lower factors result in more feedback, up to self-oscillation (with diode clipping limited integration), meaning damping factor can also be negative to drive the resonance oscillation further.\newline
+
+This can be exploited in a practical circuit, where absolute zero damping factor is hard to realise with resistive voltage dividers (such as potentiometers and board traces with non-zero stray resistances). The R9 and R10 voltage divider fed in the opposite phase of the first integrator stage summer IC3G1 from the VR1 and R11 voltage divider realises through zero modulation of the damping factor $\zeta$. 
 
 \section{Build instructions} \label{buildinstructions}
 
