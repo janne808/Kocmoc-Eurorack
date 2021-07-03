@@ -197,9 +197,9 @@ It should be noted that the above model is idealized and differs from the practi
 
 \subsection{Boosting resonance}
 
-In state variable filters the damping factor control $\zeta$ is reversed: lower factors result in more feedback, up to self-oscillation (with diode clipping limited integration), meaning damping factor can also be negative to drive the resonance oscillation further.\newline
+In state variable filters the damping factor control $\zeta$ is reversed: Lower factors result in more feedback, up to self-oscillation (with diode clipping limited integration), meaning damping factor can also be negative to drive the resonance oscillation further.\newline
 
-This can be exploited in a practical circuit, where absolute zero damping factor is hard to realise with resistive voltage dividers (such as potentiometers and board traces with non-zero stray resistances). The R9 and R10 voltage divider fed in the opposite phase of the first integrator stage summer IC3G1 from the VR1 and R11 voltage divider realises through zero modulation of the damping factor $\zeta$. 
+This can be exploited in a practical circuit, where absolute zero damping factor is hard to realise with resistive voltage dividers (such as potentiometers and board traces with non-zero stray resistances). The R9 and R10 voltage divider fed in the opposite phase of the VR1 and R11 voltage divider input of the first integrator stage operational amplifier summer IC3G1 realises through zero modulation of the damping factor $\zeta$.
 
 \section{Build instructions} \label{buildinstructions}
 
@@ -283,7 +283,7 @@ Neil Johnson, 2021
 \includegraphics[page=1, scale=0.6]{2164_svf_smd_schematic.pdf}
 \captionof{figure}{Surface mount device board schematic.}
 
-\section{Board layouts}
+\section{Board component placement layouts}
 
 \centering
 \includegraphics[page=1, scale=0.5]{2164_svf_through-hole_components.pdf}
