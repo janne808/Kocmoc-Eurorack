@@ -19960,6 +19960,8 @@ diameter 4.8 mm, vertical, grid 12.7 mm</description>
 <part name="C27" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0603" package3d_urn="urn:adsk.eagle:package:23616/2" value="100n"/>
 <part name="C28" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0603" package3d_urn="urn:adsk.eagle:package:23616/2" value="100n"/>
 <part name="R29" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0603" package3d_urn="urn:adsk.eagle:package:23555/3" value="2.7k"/>
+<part name="R30" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0603" package3d_urn="urn:adsk.eagle:package:23555/3" value="17k"/>
+<part name="AGND39" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="AGND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -20273,9 +20275,9 @@ All rights reserved</text>
 <attribute name="NAME" x="234.95" y="164.0586" size="1.778" layer="95"/>
 <attribute name="VALUE" x="234.95" y="161.798" size="1.778" layer="96"/>
 </instance>
-<instance part="R21" gate="G$1" x="215.9" y="137.16" smashed="yes" rot="R90">
-<attribute name="NAME" x="214.4014" y="135.89" size="1.778" layer="95" rot="R90"/>
-<attribute name="VALUE" x="219.202" y="135.89" size="1.778" layer="96" rot="R90"/>
+<instance part="R21" gate="G$1" x="215.9" y="142.24" smashed="yes" rot="R90">
+<attribute name="NAME" x="214.4014" y="140.97" size="1.778" layer="95" rot="R90"/>
+<attribute name="VALUE" x="219.202" y="140.97" size="1.778" layer="96" rot="R90"/>
 </instance>
 <instance part="R22" gate="G$1" x="251.46" y="152.4" smashed="yes">
 <attribute name="NAME" x="255.27" y="153.8986" size="1.778" layer="95"/>
@@ -20539,6 +20541,13 @@ All rights reserved</text>
 <attribute name="NAME" x="77.2414" y="181.61" size="1.778" layer="95" rot="R90"/>
 <attribute name="VALUE" x="82.042" y="181.61" size="1.778" layer="96" rot="R90"/>
 </instance>
+<instance part="R30" gate="G$1" x="205.74" y="142.24" smashed="yes" rot="R90">
+<attribute name="NAME" x="204.2414" y="140.97" size="1.778" layer="95" rot="R90"/>
+<attribute name="VALUE" x="209.042" y="140.97" size="1.778" layer="96" rot="R90"/>
+</instance>
+<instance part="AGND39" gate="VR1" x="205.74" y="129.54" smashed="yes">
+<attribute name="VALUE" x="210.82" y="127" size="1.778" layer="96" rot="R180"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -20667,6 +20676,7 @@ All rights reserved</text>
 <segment>
 <pinref part="AGND18" gate="VR1" pin="AGND"/>
 <pinref part="R21" gate="G$1" pin="1"/>
+<wire x1="215.9" y1="137.16" x2="215.9" y2="132.08" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="U4" gate="G$1" pin="SWITCH"/>
@@ -20898,6 +20908,11 @@ All rights reserved</text>
 <wire x1="48.26" y1="35.56" x2="43.18" y2="35.56" width="0.1524" layer="91"/>
 <junction x="43.18" y="35.56"/>
 </segment>
+<segment>
+<pinref part="AGND39" gate="VR1" pin="AGND"/>
+<pinref part="R30" gate="G$1" pin="1"/>
+<wire x1="205.74" y1="132.08" x2="205.74" y2="137.16" width="0.1524" layer="91"/>
+</segment>
 </net>
 <net name="N$2" class="0">
 <segment>
@@ -20932,10 +20947,10 @@ All rights reserved</text>
 <pinref part="R10" gate="G$1" pin="1"/>
 <wire x1="269.24" y1="71.12" x2="269.24" y2="86.36" width="0.1524" layer="91"/>
 <wire x1="193.04" y1="71.12" x2="269.24" y2="71.12" width="0.1524" layer="91"/>
-<wire x1="274.32" y1="86.36" x2="274.32" y2="144.78" width="0.1524" layer="91"/>
-<wire x1="274.32" y1="144.78" x2="185.42" y2="144.78" width="0.1524" layer="91"/>
+<wire x1="274.32" y1="86.36" x2="274.32" y2="134.62" width="0.1524" layer="91"/>
+<wire x1="274.32" y1="134.62" x2="185.42" y2="134.62" width="0.1524" layer="91"/>
 <junction x="274.32" y="86.36"/>
-<wire x1="185.42" y1="144.78" x2="185.42" y2="149.86" width="0.1524" layer="91"/>
+<wire x1="185.42" y1="134.62" x2="185.42" y2="149.86" width="0.1524" layer="91"/>
 <wire x1="185.42" y1="149.86" x2="190.5" y2="149.86" width="0.1524" layer="91"/>
 <pinref part="C13" gate="G$1" pin="+"/>
 <pinref part="C30" gate="G$1" pin="1"/>
@@ -21305,7 +21320,7 @@ All rights reserved</text>
 <net name="N$26" class="0">
 <segment>
 <pinref part="R21" gate="G$1" pin="2"/>
-<wire x1="215.9" y1="142.24" x2="215.9" y2="154.94" width="0.1524" layer="91"/>
+<wire x1="215.9" y1="147.32" x2="215.9" y2="154.94" width="0.1524" layer="91"/>
 <pinref part="IC5" gate="G1" pin="-IN"/>
 <wire x1="215.9" y1="154.94" x2="223.52" y2="154.94" width="0.1524" layer="91"/>
 <pinref part="C10" gate="G$1" pin="1"/>
@@ -21337,8 +21352,12 @@ All rights reserved</text>
 <net name="N$30" class="0">
 <segment>
 <pinref part="IC5" gate="G1" pin="+IN"/>
-<wire x1="198.12" y1="149.86" x2="223.52" y2="149.86" width="0.1524" layer="91"/>
+<wire x1="198.12" y1="149.86" x2="205.74" y2="149.86" width="0.1524" layer="91"/>
 <pinref part="C13" gate="G$1" pin="-"/>
+<pinref part="R30" gate="G$1" pin="2"/>
+<wire x1="205.74" y1="149.86" x2="223.52" y2="149.86" width="0.1524" layer="91"/>
+<wire x1="205.74" y1="147.32" x2="205.74" y2="149.86" width="0.1524" layer="91"/>
+<junction x="205.74" y="149.86"/>
 </segment>
 </net>
 <net name="N$31" class="0">
