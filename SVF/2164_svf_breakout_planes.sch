@@ -20294,6 +20294,7 @@ http://www.jwmiller.com&lt;p&gt;
 <part name="R29" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/2V" package3d_urn="urn:adsk.eagle:package:23490/1" value="2.7k"/>
 <part name="R30" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/2V" package3d_urn="urn:adsk.eagle:package:23490/1" value="17k"/>
 <part name="AGND39" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="AGND" device=""/>
+<part name="D7" library="diode" library_urn="urn:adsk.eagle:library:210" deviceset="SCHOTTKY-DIODE" device="DO35-7" package3d_urn="urn:adsk.eagle:package:43339/2" value="BAT85"/>
 </parts>
 <sheets>
 <sheet>
@@ -20302,7 +20303,7 @@ http://www.jwmiller.com&lt;p&gt;
 <text x="279.4" y="198.12" size="1.778" layer="91">lp</text>
 <text x="279.4" y="236.22" size="1.778" layer="91">hp</text>
 <text x="246.38" y="50.8" size="1.778" layer="91">resonance</text>
-<text x="86.36" y="175.26" size="1.778" layer="91">cutoff</text>
+<text x="81.28" y="177.8" size="1.778" layer="91">cutoff</text>
 <text x="38.1" y="93.98" size="1.778" layer="91">input</text>
 <text x="40.64" y="132.08" size="1.778" layer="91">cv1</text>
 <text x="40.64" y="236.22" size="1.778" layer="91">cv2</text>
@@ -20814,8 +20815,8 @@ All rights reserved</text>
 <instance part="AGND31" gate="VR1" x="307.34" y="127" smashed="yes">
 <attribute name="VALUE" x="312.42" y="124.46" size="1.778" layer="96" rot="R180"/>
 </instance>
-<instance part="AGND32" gate="VR1" x="30.48" y="193.04" smashed="yes">
-<attribute name="VALUE" x="35.56" y="190.5" size="1.778" layer="96" rot="R180"/>
+<instance part="AGND32" gate="VR1" x="30.48" y="180.34" smashed="yes">
+<attribute name="VALUE" x="35.56" y="177.8" size="1.778" layer="96" rot="R180"/>
 </instance>
 <instance part="AGND33" gate="VR1" x="127" y="12.7" smashed="yes">
 <attribute name="VALUE" x="132.08" y="10.16" size="1.778" layer="96" rot="R180"/>
@@ -20879,6 +20880,10 @@ All rights reserved</text>
 </instance>
 <instance part="AGND39" gate="VR1" x="205.74" y="129.54" smashed="yes">
 <attribute name="VALUE" x="210.82" y="127" size="1.778" layer="96" rot="R180"/>
+</instance>
+<instance part="D7" gate="G$1" x="45.72" y="198.12" smashed="yes" rot="MR90">
+<attribute name="NAME" x="47.625" y="195.834" size="1.778" layer="95" rot="MR90"/>
+<attribute name="VALUE" x="42.291" y="195.834" size="1.778" layer="96" rot="MR90"/>
 </instance>
 </instances>
 <busses>
@@ -21184,7 +21189,7 @@ All rights reserved</text>
 <pinref part="IC1" gate="E" pin="GND"/>
 <wire x1="25.4" y1="203.2" x2="30.48" y2="203.2" width="0.1524" layer="91"/>
 <pinref part="AGND32" gate="VR1" pin="AGND"/>
-<wire x1="30.48" y1="203.2" x2="30.48" y2="195.58" width="0.1524" layer="91"/>
+<wire x1="30.48" y1="203.2" x2="30.48" y2="182.88" width="0.1524" layer="91"/>
 <pinref part="C28" gate="G$1" pin="2"/>
 <pinref part="C27" gate="G$1" pin="1"/>
 <wire x1="38.1" y1="200.66" x2="38.1" y2="205.74" width="0.1524" layer="91"/>
@@ -21193,6 +21198,9 @@ All rights reserved</text>
 <junction x="38.1" y="205.74"/>
 <wire x1="30.48" y1="205.74" x2="30.48" y2="203.2" width="0.1524" layer="91"/>
 <junction x="30.48" y="203.2"/>
+<pinref part="D7" gate="G$1" pin="C"/>
+<wire x1="45.72" y1="200.66" x2="45.72" y2="205.74" width="0.1524" layer="91"/>
+<wire x1="45.72" y1="205.74" x2="38.1" y2="205.74" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="AGND13" gate="VR1" pin="AGND"/>
@@ -21608,6 +21616,10 @@ All rights reserved</text>
 <wire x1="38.1" y1="193.04" x2="38.1" y2="187.96" width="0.1524" layer="91"/>
 <wire x1="38.1" y1="187.96" x2="17.78" y2="187.96" width="0.1524" layer="91"/>
 <junction x="17.78" y="187.96"/>
+<wire x1="38.1" y1="187.96" x2="45.72" y2="187.96" width="0.1524" layer="91"/>
+<junction x="38.1" y="187.96"/>
+<pinref part="D7" gate="G$1" pin="A"/>
+<wire x1="45.72" y1="187.96" x2="45.72" y2="195.58" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$23" class="0">

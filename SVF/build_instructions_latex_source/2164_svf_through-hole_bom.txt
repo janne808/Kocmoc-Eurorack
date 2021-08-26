@@ -33,6 +33,7 @@ D3     1N4148DO35-7  1N4148DO35-7         DO35-7             DIODE
 D4     4.7           ZENER-DIODEDO34-7    DO34Z7             Z-Diode                                                    
 D5     1N5817        SCHOTTKY-DIODEDO35-7 DO35-7             Schottky Diode                                             
 D6     1N5817        SCHOTTKY-DIODEDO35-7 DO35-7             Schottky Diode                                             
+D7     BAT85         SCHOTTKY-DIODEDO35-7 DO35-7             Schottky Diode                                             
 HEADR1               10PIN_BACKSIDE       10PIN_BACKSIDE     PIN HEADER                                                 
 HEADR2               10PIN_BACKSIDE       10PIN_BACKSIDE     PIN HEADER                                                 
 HEADR3               10PIN_BACKSIDE       10PIN_BACKSIDE     PIN HEADER                                                 
