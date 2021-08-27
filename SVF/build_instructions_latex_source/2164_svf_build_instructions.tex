@@ -197,7 +197,7 @@ It should be noted that the above model is idealized and differs from the practi
 
 \subsection{Boosting resonance}
 
-In state variable filters the damping factor control $\zeta$ is reversed: Lower factors result in more feedback, up to self-oscillation (with diode clipping limited integration), meaning damping factor can also be negative to drive the resonance oscillation further.\newline
+In state variable filters the damping factor control $\zeta$ is reversed: Lower factors result in more feedback, down to self-oscillation at damping factor 0 (with diode clipping limited integration), meaning damping factor can also be negative to drive the resonance oscillation further.\newline
 
 This can be exploited in a practical circuit, where absolute zero damping factor is hard to realise with resistive voltage dividers (such as potentiometers and board traces with non-zero stray resistances). The R9 and R10 voltage divider fed in the opposite phase of the VR1 and R11 voltage divider input of the first integrator stage operational amplifier summer IC3G1 realises through zero modulation of the damping factor $\zeta$.
 
@@ -205,7 +205,7 @@ This can be exploited in a practical circuit, where absolute zero damping factor
 
 Notice that the through-hole PCB consists of panelized boards, one for front panel connectors and one for the power connector, integrators and input/output buffering. The boards are connected together with two 10-pin headers and a 11mm M3 PCB standoff.\newline
 
-It is important to mount the 9mm potentiometers, Thonkiconn jack sockets and the M3 board standoff first \emph{without soldering} to the control PCB and only after that attach them to the front panel with appropriate nuts. \newline
+It is important to mount the 9mm potentiometers, Thonkiconn jack sockets and the M3 board standoff first \emph{without soldering} to the control PCB or the top side of the SMD version board and only after that attach them to the front panel with appropriate nuts. \newline
 
 
 The building process should follow the following order
@@ -228,15 +228,17 @@ The building process should follow the following order
 \item Mount the front panel
 \item Fingertighten socket and potentiometer nuts to the panel
 \item Solder in through-hole sockets and potentiometers
-\item Tighten nuts fully
+\item Tighten nuts fully with a tool
 \item Mount potentiometer caps for VR4 and VR1
-\item For through-hole board, connect the boards with the headers and M3 screw for the PCB standoff
+\item Finally for the through-hole board, connect the boards with the 10-pin headers and M3 screw for the PCB standoff
 \end{itemize}
 
 \subsection{SSM2164 issues}
 The original Analog Devices SSM2164 has a fault which will burn the chip if the negative power supply rail becomes unconnected while the device is powered. This fault has been corrected in modern clones from SSI and Alpha but remains in Coolaudio V2164.\newline
 
-\cite{johnson} has researched the failure (with Oscar Salas) and proposed a fix which is implemented in this version of the board.
+\cite{johnson} has researched the failure (with Oscar Salas) and proposed a fix with a BAT85 diode. This is implemented starting from version 1.7 of the board.\newline
+
+Please note that if you are using a SSI or Alpha clone (SSI2164 and AS2164 respectively) of SSM2164, the BAT85 diode can be safely left unpopulated.
 
 \subsection{Capacitors}
 Capacitors C29 and C30 are used for compensating parasitic effects of the PCB and component leads and should be left unpopulated and populated only if needed. The parasitic effects manifest themselves as increased resonance at higher cutoff frequencies.
